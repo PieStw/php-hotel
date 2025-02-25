@@ -76,16 +76,15 @@
 
     
     $min_vote = isset($_GET['vote']) ? $_GET['vote'] : 0;
-    $parking = isset($_GET['parking']);
-
-
-
+    $parking = isset($_GET['parking']) ? true : false;
 
 
     echo '<div class="container d-flex flex-wrap">';
     foreach($hotels as $hotel) {
 
-        if(($hotel['vote'] >= $min_vote) && (!$parking || $hotel['parking'])) {
+
+
+        if(($hotel['vote'] >= $min_vote) && ($hotel['parking'] == $parking)) {
             echo '<div class="card" style="width: 24rem;">
                 <div class="card-body">
                 <h5 class="card-title">'.$hotel['name'].'</h5>
